@@ -1,0 +1,123 @@
+@startuml Component Structure
+
+!define COMPONENT_COLOR #FF6B35
+!define MODAL_COLOR #F7931E
+!define UI_COLOR #FDC830
+
+skinparam backgroundColor #1a1a1a
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam defaultFontColor #ffffff
+
+title Component Hierarchy
+
+package "app" #2a2a2a {
+  [layout.tsx] as layout #COMPONENT_COLOR
+  [page.tsx] as page #COMPONENT_COLOR
+  [globals.css] as css #UI_COLOR
+}
+
+package "components" #2a2a2a {
+  [video-modal.tsx] as video #MODAL_COLOR
+  [audio-modal.tsx] as audio #MODAL_COLOR
+  [text-modal.tsx] as text #MODAL_COLOR
+  [gallery-modal.tsx] as gallery #MODAL_COLOR
+}
+
+package "components/ui" #2a2a2a {
+  [dialog.tsx] as dialog #UI_COLOR
+  [button.tsx] as button #UI_COLOR
+  [scroll-area.tsx] as scroll #UI_COLOR
+}
+
+package "config" #2a2a2a {
+  [content.json] as json #COMPONENT_COLOR
+}
+
+package "types" #2a2a2a {
+  [content.ts] as types #UI_COLOR
+}
+
+package "public" #2a2a2a {
+  [videos/] as videos #UI_COLOR
+  [images/] as images #UI_COLOR
+  [audio/] as audios #UI_COLOR
+}
+
+' Hierarchy
+layout *-down- page
+layout *-down- css
+
+page *-down- video
+page *-down- audio
+page *-down- text
+page *-down- gallery
+
+video *-down- dialog
+video *-down- button
+audio *-down- dialog
+audio *-down- button
+audio *-down- scroll
+text *-down- dialog
+text *-down- button
+text *-down- scroll
+gallery *-down- dialog
+gallery *-down- button
+gallery *-down- scroll
+
+' Data flow
+json -down-> page : imports
+json -down-> video : imports
+json -down-> audio : imports
+json -down-> text : imports
+json -down-> gallery : imports
+
+types -down-> json : validates
+
+json -down-> videos : references
+json -down-> images : references
+json -down-> audios : references
+
+note right of page
+  **Main Container**
+  - Horizontal scroll
+  - Parallax background
+  - 4 circular buttons
+  - Progress tracking
+  - Mobile bullets
+  - Credits section
+end note
+
+note right of video
+  **Video Modal**
+  Title: "La flama que nos mira"
+  - Video player
+  - Upload button
+  - Gradient background
+end note
+
+note right of audio
+  **Audio Modal**
+  - Playlist display
+  - Audio controls
+  - Upload button
+  - Gradient background
+end note
+
+note right of text
+  **Text Modal**
+  Title: "La memoria de la flama"
+  - Text display
+  - Upload button
+  - Gradient background
+end note
+
+note right of gallery
+  **Gallery Modal**
+  - Masonry grid
+  - Parallax effect
+  - Upload button
+  - Gradient background
+end note
+
+@enduml

@@ -1,0 +1,127 @@
+@startuml Parallax Landing Page Architecture
+
+!define COMPONENT_BG_COLOR #FF6B35
+!define CONFIG_BG_COLOR #F7931E
+!define TYPE_BG_COLOR #FDC830
+
+skinparam backgroundColor #1a1a1a
+skinparam componentStyle rectangle
+skinparam shadowing false
+skinparam defaultFontColor #ffffff
+
+package "Configuration Layer" <<Folder>> #2a2a2a {
+  component "content.json" as JSON <<JSON>> #CONFIG_BG_COLOR {
+    [background]
+    [videoModal]
+    [audioModal]
+    [textModal]
+    [galleryModal]
+    [credits]
+  }
+  
+  component "content.ts" as Types <<TypeScript>> #TYPE_BG_COLOR {
+    interface BackgroundConfig
+    interface VideoItem
+    interface AudioItem
+    interface TextContent
+    interface GalleryImage
+    interface ContentConfig
+  }
+}
+
+package "Main Application" <<Folder>> #2a2a2a {
+  component "page.tsx" as MainPage <<React Component>> #COMPONENT_BG_COLOR {
+    + useState: scrollProgress
+    + useEffect: handleScroll
+    + useEffect: handleWheel
+    + renderButtons()
+    + renderBullets()
+    + renderCredits()
+  }
+  
+  component "layout.tsx" as Layout <<React Component>> #COMPONENT_BG_COLOR {
+    + Roboto font
+    + globals.css
+  }
+}
+
+package "Modal Components" <<Folder>> #2a2a2a {
+  component "video-modal.tsx" as VideoModal <<React Component>> #COMPONENT_BG_COLOR {
+    + Dialog
+    + video player
+    + upload button
+  }
+  
+  component "audio-modal.tsx" as AudioModal <<React Component>> #COMPONENT_BG_COLOR {
+    + Dialog
+    + audio playlist
+    + upload button
+  }
+  
+  component "text-modal.tsx" as TextModal <<React Component>> #COMPONENT_BG_COLOR {
+    + Dialog
+    + text display
+    + upload button
+  }
+  
+  component "gallery-modal.tsx" as GalleryModal <<React Component>> #COMPONENT_BG_COLOR {
+    + Dialog
+    + masonry grid
+    + parallax effect
+    + upload button
+  }
+}
+
+package "UI Components" <<Folder>> #2a2a2a {
+  component "shadcn/ui" as ShadcnUI <<Library>> #4a4a4a {
+    [Dialog]
+    [Button]
+    [ScrollArea]
+  }
+}
+
+' Relationships - Configuration
+JSON -down-> Types : validates with
+JSON -down-> MainPage : imported by
+JSON -down-> VideoModal : imported by
+JSON -down-> AudioModal : imported by
+JSON -down-> TextModal : imported by
+JSON -down-> GalleryModal : imported by
+
+' Relationships - Main Page
+MainPage -down-> VideoModal : opens
+MainPage -down-> AudioModal : opens
+MainPage -down-> TextModal : opens
+MainPage -down-> GalleryModal : opens
+Layout -down-> MainPage : wraps
+
+' Relationships - UI Components
+VideoModal -down-> ShadcnUI : uses
+AudioModal -down-> ShadcnUI : uses
+TextModal -down-> ShadcnUI : uses
+GalleryModal -down-> ShadcnUI : uses
+
+note right of JSON
+  **Centralized Configuration**
+  - All content and media paths
+  - Resource type validation
+  - Easy content updates
+end note
+
+note right of MainPage
+  **Horizontal Parallax**
+  - Scroll progress tracking
+  - Vertical to horizontal scroll
+  - Button reveal animation
+  - Mobile bullet navigation
+end note
+
+note bottom of VideoModal
+  **Modal Features**
+  - Gradient diagonal background
+  - Upload functionality
+  - Media controls
+  - Responsive design
+end note
+
+@enduml

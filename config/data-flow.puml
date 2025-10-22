@@ -1,0 +1,83 @@
+@startuml Data Flow Diagram
+
+!define PRIMARY #FF6B35
+!define SECONDARY #F7931E
+!define ACCENT #FDC830
+
+skinparam backgroundColor #1a1a1a
+skinparam shadowing false
+skinparam defaultFontColor #ffffff
+
+title Parallax Landing Page - Data Flow
+
+actor User as user #PRIMARY
+
+rectangle "Browser" {
+  usecase "Scroll\n(Vertical/Horizontal)" as scroll #SECONDARY
+  usecase "Click Button" as click #SECONDARY
+  usecase "Upload File" as upload #SECONDARY
+}
+
+rectangle "Application State" {
+  usecase "Calculate\nScroll Progress" as progress #ACCENT
+  usecase "Show/Hide\nButtons" as buttons #ACCENT
+  usecase "Open Modal" as modal #ACCENT
+}
+
+database "content.json" as config #PRIMARY {
+  frame "Configuration Data" {
+    (background)
+    (videoModal)
+    (audioModal)
+    (textModal)
+    (galleryModal)
+    (credits)
+  }
+}
+
+rectangle "Rendering Layer" {
+  usecase "Parallax\nBackground" as bg #SECONDARY
+  usecase "Circular\nButtons" as btn #SECONDARY
+  usecase "Modal\nComponents" as mod #SECONDARY
+  usecase "Credits\nSection" as cred #SECONDARY
+}
+
+' User interactions
+user --> scroll
+user --> click
+user --> upload
+
+' Scroll flow
+scroll --> progress
+progress --> buttons
+progress --> bg
+
+' Click flow
+click --> modal
+modal --> mod
+
+' Configuration flow
+config --> bg : provides media
+config --> mod : provides content
+config --> cred : provides names
+
+' Button visibility
+buttons --> btn : controls opacity
+
+' Upload flow
+upload --> mod : triggers handler
+
+note right of config
+  **Single Source of Truth**
+  All content, media paths,
+  and configuration in one place
+end note
+
+note bottom of progress
+  **Scroll Calculation**
+  scrollLeft / maxScroll
+  Updates every scroll event
+  Triggers button animations
+end note
+
+@enduml

@@ -1,0 +1,153 @@
+{
+  "background": {
+    "type": "video",
+    "src": "/mystical-fire-landscape-ultra-wide-panoramic-video.mp4",
+    "fallback": "/mystical-fire-landscape-ultra-wide-panoramic-video.jpg"
+  },
+  "buttons": [
+    {
+      "id": "video",
+      "label": "La flama que nos mira",
+      "threshold": 0
+    },
+    {
+      "id": "audio",
+      "label": "Playlist de Audio",
+      "threshold": 20
+    },
+    {
+      "id": "text",
+      "label": "La memoria de la flama",
+      "threshold": 40
+    },
+    {
+      "id": "gallery",
+      "label": "Galería Masonry",
+      "threshold": 60
+    }
+  ],
+  "modals": {
+    "video": {
+      "title": "La Flama que nos Mira",
+      "videos": [
+        {
+          "id": 1,
+          "title": "Video Principal",
+          "src": "/placeholder-video.mp4",
+          "type": "mp4",
+          "poster": "/mystical-flame-watching.jpg"
+        },
+        {
+          "id": 2,
+          "title": "Video Secundario",
+          "src": "/placeholder-video-2.webm",
+          "type": "webm",
+          "poster": "/mystical-flame-watching.jpg"
+        }
+      ]
+    },
+    "audio": {
+      "title": "Ecos Sonoros",
+      "playlist": [
+        {
+          "id": 1,
+          "title": "Susurros del Fuego",
+          "duration": "3:45",
+          "src": "/audio/track1.mp3",
+          "type": "mp3"
+        },
+        {
+          "id": 2,
+          "title": "Ecos en la Oscuridad",
+          "duration": "4:12",
+          "src": "/audio/track2.wav",
+          "type": "wav"
+        },
+        {
+          "id": 3,
+          "title": "Danza de las Llamas",
+          "duration": "5:30",
+          "src": "/audio/track3.mp3",
+          "type": "mp3"
+        },
+        {
+          "id": 4,
+          "title": "Canto Ancestral",
+          "duration": "3:58",
+          "src": "/audio/track4.mp3",
+          "type": "mp3"
+        },
+        {
+          "id": 5,
+          "title": "Resonancia Eterna",
+          "duration": "6:15",
+          "src": "/audio/track5.wav",
+          "type": "wav"
+        }
+      ]
+    },
+    "text": {
+      "title": "La Memoria de la Flama",
+      "contentType": "fixed",
+      "content": "En el principio, la flama observaba en silencio. Su danza hipnótica contaba historias ancestrales, susurrando secretos del tiempo inmemorial. Cada chispa que se elevaba llevaba consigo fragmentos de memoria, ecos de voces olvidadas que resonaban en la eternidad.\n\nLa llama no solo ilumina, también recuerda. Guarda en su corazón ardiente las palabras no dichas, los sueños no soñados, las promesas que el viento se llevó. Es testigo silencioso de la existencia, guardiana de lo efímero y lo eterno.\n\nQuienes se acercan a contemplarla sienten su mirada penetrante, como si pudiera ver más allá de la superficie, adentrándose en los rincones más profundos del alma. La flama que nos mira no juzga, solo observa, comprende y recuerda.\n\nEn su danza infinita encontramos consuelo, en su calor hallamos refugio, y en su luz descubrimos verdades que las palabras no pueden expresar. La memoria de la flama es la memoria del universo mismo, un registro eterno de todo lo que fue, es y será."
+    },
+    "gallery": {
+      "title": "Galería Mística",
+      "images": [
+        {
+          "id": 1,
+          "src": "/placeholder.svg?height=400&width=300",
+          "alt": "Retrato místico de llama",
+          "type": "jpg"
+        },
+        {
+          "id": 2,
+          "src": "/placeholder.svg?height=300&width=400",
+          "alt": "Danza de fuego abstracta",
+          "type": "png"
+        },
+        {
+          "id": 3,
+          "src": "/placeholder.svg?height=500&width=300",
+          "alt": "Llama eterna vertical",
+          "type": "jpg"
+        },
+        {
+          "id": 4,
+          "src": "/placeholder.svg?height=300&width=300",
+          "alt": "Espíritu de fuego cuadrado",
+          "type": "png"
+        },
+        {
+          "id": 5,
+          "src": "/placeholder.svg?height=400&width=500",
+          "alt": "Paisaje de llamas amplio",
+          "type": "jpg"
+        },
+        {
+          "id": 6,
+          "src": "/placeholder.svg?height=350&width=300",
+          "alt": "Memorias ardientes",
+          "type": "png"
+        },
+        {
+          "id": 7,
+          "src": "/placeholder.svg?height=300&width=400",
+          "alt": "Meditación del fuego",
+          "type": "jpg"
+        },
+        {
+          "id": 8,
+          "src": "/placeholder.svg?height=450&width=300",
+          "alt": "Llama sagrada",
+          "type": "png"
+        }
+      ]
+    }
+  },
+  "credits": {
+    "title": "Créditos",
+    "subtitle": "La flama eterna nos observa",
+    "names": ["Sofía Mendoza", "Diego Ramírez", "Luna Castillo"]
+  }
+}
