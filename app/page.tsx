@@ -97,14 +97,15 @@ export default function ParallaxLanding() {
               }}
             >
               <source src={config.background.src} type="video/mp4" />
-              {config.background.fallback && <source src={config.background.fallback} type="image/jpeg" />}
             </video>
           ) : (
-            <img
-              src={config.background.src || "/placeholder.svg"}
-              alt="Background"
-              className="h-full w-full object-cover"
+            <div
+              className="h-full w-full absolute inset-0"
               style={{
+                backgroundImage: `url('${config.background.src}')`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundAttachment: "fixed",
                 transform: `translateX(${scrollProgress * 0.5}%)`,
               }}
             />

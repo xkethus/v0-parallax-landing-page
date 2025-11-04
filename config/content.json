@@ -1,8 +1,7 @@
 {
   "background": {
-    "type": "video",
-    "src": "/mystical-fire-landscape-ultra-wide-panoramic-video.mp4",
-    "fallback": "/mystical-fire-landscape-ultra-wide-panoramic-video.jpg"
+    "type": "image",
+    "src": "/base.jpg"
   },
   "buttons": [
     {
