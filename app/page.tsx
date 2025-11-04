@@ -68,6 +68,16 @@ export default function ParallaxLanding() {
     }
   }
 
+  const scroll = (direction: "left" | "right") => {
+    if (containerRef.current) {
+      const scrollAmount = 400
+      containerRef.current.scrollBy({
+        left: direction === "right" ? scrollAmount : -scrollAmount,
+        behavior: "smooth",
+      })
+    }
+  }
+
   return (
     <>
       <div
@@ -117,6 +127,36 @@ export default function ParallaxLanding() {
             />
           ))}
         </div>
+
+        {/* Left Arrow */}
+        <button
+          onClick={() => scroll("left")}
+          className="fixed left-4 top-1/2 -translate-y-1/2 z-40 p-2 rounded-full transition-all duration-300 hover:scale-110 hover:bg-primary/10"
+          aria-label="Desplazar a la izquierda"
+          style={{
+            opacity: scrollProgress > 0 ? 1 : 0.3,
+            pointerEvents: scrollProgress > 0 ? "auto" : "none",
+          }}
+        >
+          <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        {/* Right Arrow */}
+        <button
+          onClick={() => scroll("right")}
+          className="fixed right-4 top-1/2 -translate-y-1/2 z-40 p-2 rounded-full transition-all duration-300 hover:scale-110 hover:bg-primary/10"
+          aria-label="Desplazar a la derecha"
+          style={{
+            opacity: scrollProgress < 100 ? 1 : 0.3,
+            pointerEvents: scrollProgress < 100 ? "auto" : "none",
+          }}
+        >
+          <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
 
         {/* Content Sections */}
         <div className="flex h-screen">
