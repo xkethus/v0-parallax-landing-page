@@ -1,7 +1,7 @@
 {
   "background": {
     "type": "image",
-    "src": "/base.jpg"
+    "src": "https://raw.githubusercontent.com/xkethus/v0-parallax-landing-page/main/public/base2.jpg"
   },
   "buttons": [
     {
@@ -91,7 +91,7 @@
       "content": "En el principio, la flama observaba en silencio. Su danza hipnótica contaba historias ancestrales, susurrando secretos del tiempo inmemorial. Cada chispa que se elevaba llevaba consigo fragmentos de memoria, ecos de voces olvidadas que resonaban en la eternidad.\n\nLa llama no solo ilumina, también recuerda. Guarda en su corazón ardiente las palabras no dichas, los sueños no soñados, las promesas que el viento se llevó. Es testigo silencioso de la existencia, guardiana de lo efímero y lo eterno.\n\nQuienes se acercan a contemplarla sienten su mirada penetrante, como si pudiera ver más allá de la superficie, adentrándose en los rincones más profundos del alma. La flama que nos mira no juzga, solo observa, comprende y recuerda.\n\nEn su danza infinita encontramos consuelo, en su calor hallamos refugio, y en su luz descubrimos verdades que las palabras no pueden expresar. La memoria de la flama es la memoria del universo mismo, un registro eterno de todo lo que fue, es y será."
     },
     "gallery": {
-      "title": "Galería Mística",
+      "title": "Vistas de la flama",
       "images": [
         {
           "id": 1,

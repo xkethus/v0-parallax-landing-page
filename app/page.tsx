@@ -93,7 +93,7 @@ export default function ParallaxLanding() {
               playsInline
               className="h-full w-full object-cover"
               style={{
-                transform: `translateX(${scrollProgress * 0.5}%)`,
+                transform: `translateX(${-20 + scrollProgress * 0.35}%)`,
               }}
             >
               <source src={config.background.src} type="video/mp4" />
@@ -103,10 +103,10 @@ export default function ParallaxLanding() {
               className="h-full w-full absolute inset-0"
               style={{
                 backgroundImage: `url('${config.background.src}')`,
-                backgroundSize: "cover",
+                backgroundSize: "220%",
                 backgroundPosition: "center",
                 backgroundAttachment: "fixed",
-                transform: `translateX(${scrollProgress * 0.5}%)`,
+                transform: `translateX(${-10 + scrollProgress * 0.15}%)`,
               }}
             />
           )}
