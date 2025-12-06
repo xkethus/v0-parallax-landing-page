@@ -207,6 +207,18 @@ export default function ParallaxLanding() {
                   </p>
                 ))}
               </div>
+              <a
+                href="https://docs.google.com/presentation/d/1GHN7WuO0a73H7SD_AXDsvtZReKjM-voHZ4n2aasjS8Y/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-8 px-6 py-3 rounded-full transition-all duration-300 hover:scale-105"
+                style={{
+                  background: "linear-gradient(135deg, rgba(255, 120, 40, 0.3) 0%, rgba(255, 80, 20, 0.2) 100%)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <span className="text-foreground font-light">Carpeta de Proyecto</span>
+              </a>
               <p className="mt-12 text-sm font-light text-muted-foreground/60">{config.credits.subtitle}</p>
             </div>
           </section>
