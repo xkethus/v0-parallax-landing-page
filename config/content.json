@@ -32,9 +32,9 @@
         {
           "id": 1,
           "title": "Video Principal",
-          "src": "/placeholder-video.mp4",
+          "src": "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_pOqw5BCWlA01yRWKYJ4gUfnb9RFy/jt1pAt-wz5IJd0DhyT5elH/public/ref.mp4",
           "type": "mp4",
-          "poster": "/mystical-flame-watching.jpg"
+          "poster": "/ref.png"
         },
         {
           "id": 2,
@@ -145,7 +145,7 @@
     }
   },
   "credits": {
-    "title": "Habitar la flama",
+    "title": "Habituar la flama",
     "subtitle": "Un proyecto para y de los Salmantinos",
     "names": ["Enrique Hernández"]
   }

@@ -3,7 +3,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Play, Pause, Volume2, VolumeX, Upload, Maximize } from "lucide-react"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import type { VideoModalConfig } from "@/types/content"
 
 interface VideoModalProps {
@@ -16,7 +16,43 @@ export function VideoModal({ isOpen, onClose, config }: VideoModalProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const currentVideo = config.videos[currentVideoIndex]
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load()
+      setIsPlaying(false)
+    }
+  }, [currentVideoIndex])
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause()
+      } else {
+        videoRef.current.play()
+      }
+      setIsPlaying(!isPlaying)
+    }
+  }
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted
+      setIsMuted(!isMuted)
+    }
+  }
+
+  const toggleFullscreen = () => {
+    if (videoRef.current) {
+      if (document.fullscreenElement) {
+        document.exitFullscreen()
+      } else {
+        videoRef.current.requestFullscreen()
+      }
+    }
+  }
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -29,7 +65,12 @@ export function VideoModal({ isOpen, onClose, config }: VideoModalProps) {
           {/* Video Player */}
           <div className="relative flex-1 bg-black/50 rounded-lg overflow-hidden">
             <div className="absolute inset-0 flex items-center justify-center">
-              <video className="w-full h-full object-contain" poster={currentVideo.poster}>
+              <video
+                ref={videoRef}
+                className="w-full h-full object-contain"
+                poster={currentVideo.poster}
+                onClick={togglePlay}
+              >
                 <source src={currentVideo.src} type={`video/${currentVideo.type}`} />
               </video>
             </div>
@@ -37,12 +78,7 @@ export function VideoModal({ isOpen, onClose, config }: VideoModalProps) {
             {/* Video Controls Overlay */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
               <div className="flex items-center gap-3">
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  onClick={() => setIsPlaying(!isPlaying)}
-                  className="text-white hover:bg-white/20"
-                >
+                <Button size="icon" variant="ghost" onClick={togglePlay} className="text-white hover:bg-white/20">
                   {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
                 </Button>
 
@@ -50,16 +86,11 @@ export function VideoModal({ isOpen, onClose, config }: VideoModalProps) {
                   <div className="h-full w-1/3 bg-orange-500" />
                 </div>
 
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  onClick={() => setIsMuted(!isMuted)}
-                  className="text-white hover:bg-white/20"
-                >
+                <Button size="icon" variant="ghost" onClick={toggleMute} className="text-white hover:bg-white/20">
                   {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
                 </Button>
 
-                <Button size="icon" variant="ghost" className="text-white hover:bg-white/20">
+                <Button size="icon" variant="ghost" className="text-white hover:bg-white/20" onClick={toggleFullscreen}>
                   <Maximize className="h-5 w-5" />
                 </Button>
               </div>
